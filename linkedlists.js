@@ -1,48 +1,44 @@
-//a list node always has a data and apointer
-//implementing a list node in javascript
 class ListNode{
     constructor(data){
-        this.data = data;
-        this.next = null;
+        this.node = data;
+        this.next = null
     }
-}
-//implementing a linked list in javascript
-class LinkedList{
-    constructor(){
-        this.head = null;
-        this.size = 0;
+ }
+ class LinkedList{
+     constructor(head = null){
+         this.head = head;
+     }
+     size(){
+         let nodeCount = 0;
+         let node = this.head;
+         while(node){
+             nodeCount ++
+             node = node.next;
+         }
+         return nodeCount;
+     }
+    clear(){
+         this.head = null;
+         return this.head;
+              }
+    getLast(){
+        let lastNode = this.head;
+        if(lastNode){
+            while(lastNode.next){
+                lastNode = lastNode.next;
+            }
+        }
+        return lastNode;
     }
-size_of_list(data){
-    //creating a list node and adding a pointer
-    const node1 = new ListNode(data);  
-    if(!this.head){
-        this.head = node1; 
+    getFirst(){
+        return this.head;
     }
-    else{
-        this.head = node1;
-        node1.next = this.head;
+    getNewHead(data){
+      let newHead = new ListNode(data);
+        newHead.next = this.head;
+        this.head = newHead;
+        return newHead;
     }
-        this.size++;
-    
-    console.log(this.size);    
-    
-};
-removeHead(){
-    if(this.head === null){
-        return  //returns empty if the head is empty
-    }
-    else{
-        this.head = this.head.next;
-        this.size --;
-    }
-    console.log(this.size);
-}
-}
+ }
 
-//creating linked list from Linkedlist class
-const list = new LinkedList();
-list.size_of_list(5);
-list.removeHead();
-
-
-
+ 
