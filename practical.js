@@ -122,7 +122,11 @@ previousNode.next = previousNode.next.next;
 return this.head;
 };
 
+}
 
+LinkedList.prototype.deleteList = function (){
+    this.head = null;
+    return this.head;
 }
 
 let list = new LinkedList();
@@ -140,7 +144,9 @@ console.log(list.insert(110,0));
 console.log(list.deleteNode1());
 console.log(list.deleteLastNode());
 console.log(list.deleteRandom(200, 3));
-console.log(list.head.next);
+
+console.log(list.deleteList());
+console.log(list);
 
 
 
