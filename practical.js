@@ -2,6 +2,7 @@
 class LinkedList{
     constructor(head = null){
         this.head = head
+        this.length = 0;
     }
 }
   
@@ -23,6 +24,7 @@ LinkedList.prototype.createNode = function (data){
     currentNode.next = node;
 
     }
+    this.length ++;
     
 }
 
