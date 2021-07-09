@@ -132,6 +132,79 @@ DoubleLinkedList.prototype.getAt = function (index){
         return node;
     }
 }
+DoubleLinkedList.prototype.updateNode = function(data, index){
+     
+    const chosenNode = this.getAt(index);
+
+    if(chosenNode){
+        chosenNode.value = data;
+    return chosenNode;        
+    }
+    return null;
+
+
+}
+DoubleLinkedList.prototype.insert = function(data, index){
+    let node = {
+        value:data,
+        next: null,
+        prev:null,
+    }
+
+    if(!this.length|| index <0 || index >= this.length){
+        return null;
+    }
+    //inseerting at the top of the list
+   if(index === 0){
+       this.head = node;
+       this.tail= node
+   }
+else{
+    this.previousNode = this.getAt(index -1 );
+    node.next = this.previousNode;
+    this.previousNode.next = node;
+    node.prev = this.previousNode;   
+    
+}
+return this.head; 
+
+}
+DoubleLinkedList.prototype.removeSpecific =function (data,index){
+    let newNode = {
+        value:data,
+        next:null,
+        prev:null
+    }
+    let removableNode = this.head;
+    if(!this.length){
+        this.head = newNode;
+        this.tail = newNode;
+    }
+   
+    if(index === 0){
+        this.head = removableNode.next;
+        this.head.prev = null;
+        removableNode.next = null;
+    }
+    else{ 
+    
+        
+        const remove = this.getAt(index);
+        const previousNode = this.getAt(index-1);
+        previousNode.next = previousNode.next.next;
+   
+        remove.prev = null;
+        remove.next = null;
+
+                       
+            return remove;
+    }
+        
+        // return this.head;
+
+    
+
+}
 
 var doubleLinkedList = new DoubleLinkedList();
 console.log(doubleLinkedList.AddNode(3));
@@ -151,4 +224,9 @@ console.log(doubleLinkedList);
 console.log(doubleLinkedList.removeHeadNode());
 console.log(doubleLinkedList);
 console.log(doubleLinkedList.getAt(2));
+console.log(doubleLinkedList);
+console.log(doubleLinkedList.updateNode(1000, 3));
+console.log(doubleLinkedList);
+console.log(doubleLinkedList.insert(2098,1));
+console.log(doubleLinkedList.removeSpecific(400,1));
 console.log(doubleLinkedList);
