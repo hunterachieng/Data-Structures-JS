@@ -95,6 +95,22 @@ LinkedList.prototype.deleteLastNode = function(){
      return previous;
 
 }
+//reversing the list
+LinkedList.prototype.reverse = function (){
+    let node = this.head;
+    let previous = null;
+    let following = this.head;
+
+    while(node !== null){
+        following = following.next;
+        node.next = previous;
+        previous = node;
+        node = following;
+    }
+    return previous;   
+    
+
+}
 
 //deleting random nodes
 
@@ -143,12 +159,13 @@ console.log(list);
 console.log(list.getNode(4));
 console.log(list.insert(110,2));
 console.log(list.insert(110,0));
-console.log(list.deleteNode1());
-console.log(list.deleteLastNode());
-console.log(list.deleteRandom(200, 3));
+console.log(list.reverse());
+// console.log(list.deleteNode1());
+// console.log(list.deleteLastNode());
+// console.log(list.deleteRandom(200, 3));
 
-console.log(list.deleteList());
-console.log(list);
+// console.log(list.deleteList());
+// console.log(list);
 
 
 
